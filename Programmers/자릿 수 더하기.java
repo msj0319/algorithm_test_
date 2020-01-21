@@ -1,6 +1,6 @@
 import java.util.*;
 public class Solution {
-	public int Solution(int n) {
+	public int solution(int n) {
 		int answer = 0;
 
 		while (n!=0) {

@@ -1,6 +1,6 @@
 import java.util.Arrays;
 class Solution {
-	public boolean Solution(int[] arr) {
+	public boolean solution(int[] arr) {
 		boolean answer = true;
 		Arrays.sort(arr);
 
