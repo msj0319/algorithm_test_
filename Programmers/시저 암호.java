@@ -10,6 +10,9 @@ class Solution {
           else if (Character.isUpperCase(ch)) { //대문자면
               ch = (char)((ch-'A'+n) % 26 + 'A');
           }
+          else if (ch == 32) { //받은 문자가 공백일 때
+            answer += "";
+          }
           answer = answer + ch;
       }
       return answer;
