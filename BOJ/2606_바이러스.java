@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 public class Main {
-
+    
     public static int bfs(int host, boolean[] infected, int virus_computer) {
         Queue<Integer> queue = new LinkedList<Integer>();
         queue.offer(host);
