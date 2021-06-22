@@ -1,0 +1,2 @@
+SELECT ANIMAL_TYPE, IFNULL(NAME,'No name'), SEX_UPON_INTAKE /*IFNULL(A,B) 절을 사용하여 만약 A 내용이 NULL이면 B로 컬럼을 채우는 방식 */
+FROM ANIMAL_INS
