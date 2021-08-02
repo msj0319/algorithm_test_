@@ -27,6 +27,7 @@ public class Main
         //결론 : Collections.sort()는 Hybrid stable sorting algorithm이다.
         Collections.sort(num);
 
+        //출력 초과가 나기 때문에 StringBuilder 사용
         StringBuilder sb = new StringBuilder();
 
         for (int item : num) {
