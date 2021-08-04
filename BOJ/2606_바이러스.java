@@ -1,56 +1,64 @@
-import java.util.*;
-import java.io.*;
-public class Main {
-    
-    public static int bfs(int host, boolean[] infected, int virus_computer) {
-        Queue<Integer> queue = new LinkedList<Integer>();
-        queue.offer(host);
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.StringTokenizer;
+
+public class Main
+{
+    static int bfs(int V, boolean[] visited, int infected) {
+        Queue<Integer> queue = new LinkedList<>();
+        queue.offer(V);
+
         while (!queue.isEmpty()) {
-            host = queue.poll();
-            if (infected[host]) continue;
+            V = queue.poll();
 
-            infected[host] = true;
-            virus_computer++;
+            if (visited[V]) continue;
+            visited[V] = true;
 
-            for (int next_vertex : computerList[host]) {
-                queue.offer(next_vertex);
+            infected++;
+
+            for (int next_v : computer_list[V]) {
+                queue.offer(next_v);
             }
         }
-        return virus_computer;
+        return infected;
     }
-    public static int computer_cnt;
-    public static LinkedList<Integer>[] computerList;
 
-    public static void main(String[] args) throws IOException{
+    public static int computer_num;
+    public static LinkedList<Integer>[] computer_list;
+
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        computer_cnt = Integer.parseInt(st.nextToken());
+        computer_num = Integer.parseInt(br.readLine());
+        int connected_num = Integer.parseInt(br.readLine());
 
-        st = new StringTokenizer(br.readLine());
-        int edge_cnt = Integer.parseInt(st.nextToken());
+        computer_list = new LinkedList[computer_num + 1];
 
-        computerList = new LinkedList[computer_cnt + 1];
-
-        for (int i=0; i <= computer_cnt; i++) {
-            computerList[i] = new LinkedList<Integer>();
+        for (int i=1; i<=computer_num; i++) {
+            computer_list[i] = new LinkedList<>();
         }
-        for (int i=0; i < edge_cnt; i++) {
-            st = new StringTokenizer(br.readLine());
 
-            int connected_computer1 = Integer.parseInt(st.nextToken());
-            int connected_computer2 = Integer.parseInt(st.nextToken());
+        for (int i=0; i<connected_num; i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
 
-            computerList[connected_computer1].add(connected_computer2);
-            computerList[connected_computer2].add(connected_computer1);
+            int comp1 = Integer.parseInt(st.nextToken());
+            int comp2 = Integer.parseInt(st.nextToken());
 
-            Collections.sort(computerList[connected_computer1]);
-            Collections.sort(computerList[connected_computer2]);
+            computer_list[comp1].add(comp2);
+            computer_list[comp2].add(comp1);
+
+            Collections.sort(computer_list[comp1]);
+            Collections.sort(computer_list[comp2]);
         }
-        int virus_computer = 0;
-        boolean[] infected = new boolean[computer_cnt+1];
-        virus_computer = bfs(1, infected, virus_computer);
 
-        System.out.println(virus_computer-1);
+        int infected = -1;
+        boolean[] bfs_visited = new boolean[computer_num+1];
+
+        infected = bfs(1, bfs_visited, infected);
+        System.out.println(infected);
     }
 }
