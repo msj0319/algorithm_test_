@@ -31,8 +31,8 @@ public class Main
 
             if (visited[V]) continue;               //3. 만약 꺼낸 노드가 이미 방문한 노드라면, 넘어감
             visited[V] = true;                      //4. 방문하지 않았다면 true로 마킹
-            //System.out.print(V);                    //5. 방문한 노드는 출력
-            //System.out.print(" ");
+            System.out.print(V);                    //5. 방문한 노드는 출력
+            System.out.print(" ");
 
             for (int next_v : graph[V]) {           //6. 방문된 노드에 연결된 노드들을 전부 큐에 삽입
                 queue.offer(next_v);
