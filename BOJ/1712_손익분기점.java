@@ -18,7 +18,7 @@ public class Main {
             //=> n(C - B) = A
             //=> n = A / (C - B)
 
-        if (C <= B) //(C - B)가 음수이면 손익분기점이 없다는 뜻.
+        if (C - B <= 0) //(C - B)가 음수거나 0이면 손익분기점이 없다는 뜻.
             System.out.println("-1");
         else
             //총 이익이 나는 지점 => n = A / (C - B) + 1
