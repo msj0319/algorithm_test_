@@ -40,7 +40,7 @@ public class Main
                 }
             }
         }
-        //만약 b 값이 true 면 순열의 첫번째이므로(다음 반복문을 거치지 않았으므로) -1 출력
+        //만약 b 값이 true 면 순열의 마지막이므로(다음 반복문을 거치지 않았으므로) -1 출력
         if (b) {
             for (int i=0; i< arr.length; i++) {
                 System.out.print(arr[i] + " ");
